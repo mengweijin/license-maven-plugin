@@ -19,7 +19,7 @@
 </p>
 
 ## Description
-扫描项目中依赖的库的 LICENSE。
+扫描项目中依赖的库的 LICENSE，对一些商业不友好的 LICENSE 发出失败告警。
 
 开发依赖于 [https://www.mojohaus.org/license-maven-plugin/index.html](https://www.mojohaus.org/license-maven-plugin/index.html)
 
