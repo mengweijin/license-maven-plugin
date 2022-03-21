@@ -59,7 +59,7 @@
 ```
 
 ## 在 idea 中使用
-执行后，会在 target/generated-source/license 下生成一个 txt 文件，其中保存了所以依赖库的 license 信息。
+执行后，会在 **target/generated-source/license** 下生成一个 txt 文件，其中保存了所有依赖库的 license 信息。
 
 ![image](docs/image/license-maven-plugin.png)
 
