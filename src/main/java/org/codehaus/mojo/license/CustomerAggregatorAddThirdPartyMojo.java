@@ -34,7 +34,7 @@ public class CustomerAggregatorAddThirdPartyMojo extends AggregatorAddThirdParty
      * 然后把 doAcation() 方法中的参数改为下面的 PLUGIN_GROUP_ARTIFACT
      */
     private static final String PLUGIN_GROUP_ARTIFACT = "com.github.mengweijin:license-maven-plugin";
-    private static final String MOJO_NAME= "check-add-third-party";
+    private static final String MOJO_NAME= "add-third-party";
 
     @Override
     protected void doAction() throws Exception {

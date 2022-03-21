@@ -1,6 +1,5 @@
 package com.github.mengweijin.license;
 
-import com.github.mengweijin.license.Const;
 import com.github.mengweijin.license.merge.License;
 import com.github.mengweijin.license.merge.impl.AGPL;
 import com.github.mengweijin.license.merge.impl.APACHE;
@@ -18,10 +17,11 @@ import com.github.mengweijin.license.merge.impl.MPL;
 import com.github.mengweijin.license.merge.impl.MULAN;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.codehaus.mojo.license.AbstractAddThirdPartyMojo;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -60,14 +60,14 @@ public abstract class Utils extends AbstractAddThirdPartyMojo {
         Arrays.stream(split).forEach(excludedLicenses::setExcludedLicense);
     }
     
-    public static List<String> resetLicenseMerges(Map<String, HashSet<String>> map) {
+    public static List<String> resetLicenseMerges(Map<String, LinkedHashSet<String>> map) {
         LICENSE_MERGE_OBJECT_LIST.forEach(licenseMerge -> {
             String mainlyLicense = licenseMerge.getMainlyLicense();
             List<String> licenseList = Arrays.asList(licenseMerge.getLicenses());
             if (map.containsKey(mainlyLicense)) {
                 map.get(mainlyLicense).addAll(licenseList);
             } else {
-                map.put(mainlyLicense, new HashSet<>(licenseList));
+                map.put(mainlyLicense, new LinkedHashSet<>(licenseList));
             }
         });
 
@@ -76,16 +76,22 @@ public abstract class Utils extends AbstractAddThirdPartyMojo {
         return list;
     }
 
-    public static Map<String, HashSet<String>> listToMap(List<String> list) {
+    public static Map<String, LinkedHashSet<String>> listToMap(List<String> list) {
         if (list == null) {
             list = new ArrayList<>();
         }
-        Map<String, HashSet<String>> map = new HashMap<>(list.size());
+        Map<String, LinkedHashSet<String>> map = new HashMap<>(list.size());
         list.forEach(value -> {
             String[] split = value.split("\\|");
-            map.put(split[0], new HashSet<>(Arrays.asList(split)));
+            map.put(split[0], new LinkedHashSet<>(Arrays.asList(split)));
         });
 
         return map;
+    }
+
+    public static void printLog(Iterable iterable) {
+        System.out.println("----------------------------------------------------");
+        iterable.forEach(System.out::println);
+        System.out.println("----------------------------------------------------");
     }
 }
