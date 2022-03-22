@@ -1,4 +1,4 @@
-## CHANGELOG
+## **CHANGELOG**
 ### [v1.0.1] 2022-03-22
 - Increasing compatibility.
 

@@ -21,11 +21,7 @@
 ## Description
 扫描项目中依赖的库的 LICENSE，对一些商业不友好的 LICENSE 发出失败告警。
 
-开发依赖于 [https://www.mojohaus.org/license-maven-plugin/index.html](https://www.mojohaus.org/license-maven-plugin/index.html)
-
-因此，下面的这两个命令的语义和使用与上面开发依赖项完全兼容。
-- license:add-third-party
-- aggregate-add-third-party
+开发依赖于 [https://www.mojohaus.org/license-maven-plugin/index.html](https://www.mojohaus.org/license-maven-plugin/index.html) 并且对其全兼容。
 
 ### 扩展项
 
@@ -74,6 +70,8 @@ mvn license:aggregate-add-third-party
 mvn com.github.mengweijin:license:add-third-party
 mvn com.github.mengweijin:license:aggregate-add-third-party
 ```
+
+更详细的使用可以参考：[https://www.mojohaus.org/license-maven-plugin/index.html](https://www.mojohaus.org/license-maven-plugin/index.html) 并且对其全兼容。
 
 ## Futures
 You are welcome to suggest better ways to improve this widget.
