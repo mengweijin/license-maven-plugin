@@ -17,7 +17,7 @@ import org.codehaus.mojo.license.AddThirdPartyMojo;
  */
 @Slf4j
 @Mojo( name = "add-third-party", requiresDependencyResolution = ResolutionScope.TEST, defaultPhase = LifecyclePhase.GENERATE_RESOURCES )
-public class LicenseAddThirdPartyMojo extends AddThirdPartyMojo {
+public class ExtendAddThirdPartyMojo extends AddThirdPartyMojo {
 
     @Override
     protected void init() throws Exception {
@@ -27,14 +27,15 @@ public class LicenseAddThirdPartyMojo extends AddThirdPartyMojo {
         this.failOnBlacklist = true;
 
         // licenseMerges
-        this.licenseMerges = Utils.resetLicenseMerges(Utils.listToMap(this.licenseMerges));
+        this.licenseMerges = Utils.addDefaultLicenseMerges(this.licenseMerges);
 
         // IncludedLicenses
-        Utils.addDefaultIncludedLicenses(this.includedLicenses);
+        Utils.addDefaultIncludedLicensesIfEmpty(this.includedLicenses);
 
         // ExcludedLicenses
-        Utils.addDefaultExcludedLicenses(this.excludedLicenses);
+        Utils.addDefaultExcludedLicensesIfEmpty(this.excludedLicenses);
 
         super.init();
     }
+
 }

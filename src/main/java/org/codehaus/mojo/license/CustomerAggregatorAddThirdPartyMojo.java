@@ -34,7 +34,6 @@ public class CustomerAggregatorAddThirdPartyMojo extends AggregatorAddThirdParty
      * 然后把 doAcation() 方法中的参数改为下面的 PLUGIN_GROUP_ARTIFACT
      */
     private static final String PLUGIN_GROUP_ARTIFACT = "com.github.mengweijin:license-maven-plugin";
-    private static final String MOJO_NAME= "add-third-party";
 
     @Override
     protected void doAction() throws Exception {
@@ -65,7 +64,7 @@ public class CustomerAggregatorAddThirdPartyMojo extends AggregatorAddThirdParty
             throw new IllegalStateException("Can't find license-maven-plugin");
         }
 
-        String addThirdPartyRoleHint = groupId + ":" + artifactId + ":" + version + ":" + MOJO_NAME;
+        String addThirdPartyRoleHint = groupId + ":" + artifactId + ":" + version + ":" + "add-third-party";
 
         for (MavenProject reactorProject : reactorProjects) {
             if (getProject().equals(reactorProject) && !acceptPomPackaging) {

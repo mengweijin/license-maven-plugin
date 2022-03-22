@@ -12,7 +12,7 @@ import org.codehaus.mojo.license.CustomerAggregatorAddThirdPartyMojo;
  * @author mengweijin
  */
 @Mojo(name = "aggregate-add-third-party", aggregator = true, defaultPhase = LifecyclePhase.GENERATE_RESOURCES, requiresDependencyResolution = ResolutionScope.TEST, threadSafe = true)
-public class LicenseAggregatorAddThirdPartyMojo extends CustomerAggregatorAddThirdPartyMojo {
+public class ExtendAggregatorAddThirdPartyMojo extends CustomerAggregatorAddThirdPartyMojo {
 
     @Override
     protected void init() throws Exception {
@@ -22,13 +22,13 @@ public class LicenseAggregatorAddThirdPartyMojo extends CustomerAggregatorAddThi
         this.failOnBlacklist = true;
 
         // licenseMerges
-        this.licenseMerges = Utils.resetLicenseMerges(Utils.listToMap(this.licenseMerges));
+        this.licenseMerges = Utils.addDefaultLicenseMerges(this.licenseMerges);
 
         // IncludedLicenses
-        Utils.addDefaultIncludedLicenses(this.includedLicenses);
+        Utils.addDefaultIncludedLicensesIfEmpty(this.includedLicenses);
 
         // ExcludedLicenses
-        Utils.addDefaultExcludedLicenses(this.excludedLicenses);
+        Utils.addDefaultExcludedLicensesIfEmpty(this.excludedLicenses);
 
         super.init();
     }
